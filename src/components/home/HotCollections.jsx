@@ -4,19 +4,46 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import CollectionSkeleton from './CollectionSkeleton';
+
+const SampleNextArrow = ({ className, style, onClick, icon1 }) => (
+  <div
+    className={className}
+    style={{ ...style, display: "block", background: "black", fontsize: "40px", borderRadius: "50%", color: "white"
+     }}
+    onClick={onClick}
+  >
+    <i className={`fas ${icon1}`}></i>
+  </div>
+);
+
+const SamplePrevArrow = ({ className, style, onClick, icon2 }) => (
+  <div
+    className={className}
+    style={{ ...style, display: "block", background: "black", fontsize: "40px", borderRadius: "50%", color: "white" }}
+    onClick={onClick}
+  >
+    <i className={`fas ${icon2}`}></i>
+  </div>
+);
 
 const HotCollections = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true);
         const response = await axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
         const dummyData = [{ nftImage: "dummyImage1.png", authorImage: "author1.png", title: "Collection 1", code: "001" }];
         setData(dummyData);
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
@@ -27,8 +54,10 @@ const HotCollections = () => {
     infinite: true,  
     speed: 500,
     slidesToShow: 4,  
-    slidesToScroll: 1, 
+    slidesToScroll: 1, // Changed to 1 for smoother sliding
     initialSlide: 0,
+    nextArrow: <SampleNextArrow icon1="fa-solid fa-arrow-right" />,
+    prevArrow: <SamplePrevArrow icon2="fa-solid fa-arrow-left" />,
     responsive: [
       {
         breakpoint: 1024,
@@ -67,10 +96,16 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {data.length > 0 && (
-            <Slider {...settings}>
-              {data.map((item, index) => (
-                <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+          <Slider {...settings}>
+            {loading ? (
+              Array(4).fill(0).map((_, index) => (
+                <div className="px-1" key={`skeleton-${index}`}>
+                  <CollectionSkeleton />
+                </div>
+              ))
+            ) : (
+              data.map((item, index) => (
+                <div className="px-1" key={index}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
                       <Link to="/item-details">
@@ -99,9 +134,9 @@ const HotCollections = () => {
                     </div>
                   </div>
                 </div>
-              ))}
-            </Slider>
-          )}
+              ))
+            )}
+          </Slider>
         </div>
       </div>
     </section>
