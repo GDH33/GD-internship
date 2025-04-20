@@ -16558,7 +16558,7 @@ img {
   }
 
   .nft__item_lg .de_countdown {
-    padding-top: 0;
+    padding-top: opx;
   }
 
   #items-carousel-big .owl-prev,

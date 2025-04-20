@@ -54,7 +54,7 @@ const HotCollections = () => {
     infinite: true,  
     speed: 500,
     slidesToShow: 4,  
-    slidesToScroll: 1, // Changed to 1 for smoother sliding
+    slidesToScroll: 1,
     initialSlide: 0,
     nextArrow: <SampleNextArrow icon1="fa-solid fa-arrow-right" />,
     prevArrow: <SamplePrevArrow icon2="fa-solid fa-arrow-left" />,
@@ -69,7 +69,7 @@ const HotCollections = () => {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 720,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
