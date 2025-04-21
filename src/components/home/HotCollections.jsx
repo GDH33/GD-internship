@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import CollectionSkeleton from './CollectionSkeleton';
+import SkeletonComponent from './utilities/Skeleton';
 
 const SampleNextArrow = ({ className, style, onClick, icon1 }) => (
   <div
@@ -100,7 +100,7 @@ const HotCollections = () => {
             {loading ? (
               Array(4).fill(0).map((_, index) => (
                 <div className="px-1" key={`skeleton-${index}`}>
-                  <CollectionSkeleton />
+                  <SkeletonComponent />
                 </div>
               ))
             ) : (

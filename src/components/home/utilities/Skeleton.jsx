@@ -1,6 +1,7 @@
 import React from 'react';
+import './Skeleton.css';
 
-const CollectionSkeleton = () => {
+const SkeletonComponent = () => {
   return (
     <div className="nft_coll skeleton-wrapper">
       <div className="nft_wrap">
@@ -17,4 +18,4 @@ const CollectionSkeleton = () => {
   );
 };
 
-export default CollectionSkeleton;
+export default SkeletonComponent;
