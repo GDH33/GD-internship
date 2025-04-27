@@ -1,21 +1,16 @@
-import React from 'react';
-import './Skeleton.css';
+import React from "react";
 
-const SkeletonComponent = () => {
+const Skeleton = ({ width, height, borderRadius }) => {
   return (
-    <div className="nft_coll skeleton-wrapper">
-      <div className="nft_wrap">
-        <div className="skeleton-image"></div>
-      </div>
-      <div className="nft_coll_pp">
-        <div className="skeleton-avatar"></div>
-      </div>
-      <div className="nft_coll_info">
-        <div className="skeleton-title"></div>
-        <div className="skeleton-code"></div>
-      </div>
-    </div>
+    <div
+      className="skeleton-box"
+      style={{
+        width,
+        height,
+        borderRadius,
+      }}
+    ></div>
   );
 };
 
-export default SkeletonComponent;
+export default Skeleton;

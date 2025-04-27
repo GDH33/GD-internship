@@ -31,7 +31,7 @@ const ExploreItems = () => {
       Math.min(prevVisibleItems + 4, data.length)
     );
   };
-  
+
   const handleFilterChange = async (event) => {
     try {
       setLoading(true);
@@ -57,10 +57,10 @@ const ExploreItems = () => {
         </select>
       </div>
       {loading
-        ? Array(4)
+        ? Array(8)
             .fill(0)
             .map((_, index) => (
-              <div className="px-1" key={`skeleton-${index}`}>
+              <div className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12" key={`skeleton-${index}`}>
                 <Skeleton />
               </div>
             ))
