@@ -51,7 +51,7 @@ const TopSellers = () => {
                 : data.map((item, index) => (
                     <li key={index}>
                       <div className="author_list_pp">
-                        <Link to="/author">
+                        <Link to={`/author/${item.authorId}`}>
                           <img
                             className="lazy pp-author"
                             src={item.authorImage}
@@ -61,7 +61,7 @@ const TopSellers = () => {
                         </Link>
                       </div>
                       <div className="author_list_info">
-                        <Link to="/author">{item.authorName}</Link>
+                        <Link to={`/author/${item.authorId}`}>{item.authorName}</Link>
                         <span>{item.price} ETH</span>
                       </div>
                     </li>
