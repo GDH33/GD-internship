@@ -18,7 +18,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
             <Route path="/explore" element={<Explore />} />
             <Route path="/author" element={<Author />} />
             <Route path="/author/:authorId" element={<Author />} />
-            <Route path="/item-details" element={<ItemDetails />} />
+            <Route path="/item-details/:nftId" element={<ItemDetails />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Footer />
         </Router>
