@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopSellers = () => {
   const [data, setData] = useState([]);
@@ -24,9 +25,13 @@ const TopSellers = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    AOS.init({});
+  }, []);
+
   return (
     <section id="section-popular" className="pb-5">
-      <div className="container">
+      <div className="container" data-aos="fade-down" data-aos-duration="4000">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -61,7 +66,9 @@ const TopSellers = () => {
                         </Link>
                       </div>
                       <div className="author_list_info">
-                        <Link to={`/author/${item.authorId}`}>{item.authorName}</Link>
+                        <Link to={`/author/${item.authorId}`}>
+                          {item.authorName}
+                        </Link>
                         <span>{item.price} ETH</span>
                       </div>
                     </li>

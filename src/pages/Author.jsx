@@ -4,12 +4,18 @@ import { Link, useParams } from "react-router-dom";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import Skeleton from "../components/utilities/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Author = () => {
   const { authorId } = useParams();
   const [authorData, setAuthorData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
+
+  useEffect(() => {
+    AOS.init({});
+  }, []);
 
   useEffect(() => {
     const fetchAuthorData = async () => {
@@ -45,7 +51,7 @@ const Author = () => {
         id="profile_banner"
         aria-label="section"
         className="text-light"
-        style={{ background: '#eee', height: '250px' }}
+        style={{ background: "#eee", height: "250px" }}
       />
       <section aria-label="section">
         <div className="container">
@@ -54,10 +60,10 @@ const Author = () => {
               <div className="d_profile de-flex">
                 <div className="de-flex-col">
                   <div className="profile_avatar">
-                    <Skeleton 
-                      width="150px" 
-                      height="150px" 
-                      className="rounded-circle mb-3" 
+                    <Skeleton
+                      width="150px"
+                      height="150px"
+                      className="rounded-circle mb-3"
                     />
                     <div className="profile_name">
                       <Skeleton width="200px" height="24px" className="mb-2" />
@@ -79,15 +85,24 @@ const Author = () => {
             <div className="col-md-12">
               <div className="de_tab tab_simple">
                 <div className="row">
-                  {Array(4).fill(0).map((_, index) => (
-                    <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
-                      <div className="nft__item">
-                        <Skeleton height="200px" className="mb-3" />
-                        <Skeleton width="70%" height="24px" className="mb-2" />
-                        <Skeleton width="40%" height="18px" />
+                  {Array(4)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div
+                        className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                        key={index}
+                      >
+                        <div className="nft__item">
+                          <Skeleton height="200px" className="mb-3" />
+                          <Skeleton
+                            width="70%"
+                            height="24px"
+                            className="mb-2"
+                          />
+                          <Skeleton width="40%" height="18px" />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>
@@ -117,7 +132,11 @@ const Author = () => {
               style={{ background: `url(${AuthorBanner}) top` }}
             />
             <section aria-label="section">
-              <div className="container">
+              <div
+                className="container"
+                data-aos="fade-down"
+                data-aos-duration="4000"
+              >
                 <div className="row">
                   <div className="col-md-12">
                     <div className="d_profile de-flex">

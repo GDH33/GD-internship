@@ -3,11 +3,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CountdownTimer from "../utilities/CountdownTimer";
 import Skeleton from "../utilities/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ExploreItems = () => {
   const [data, setData] = useState([]);
   const [visibleItems, setVisibleItems] = useState(8);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({});
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,7 +66,10 @@ const ExploreItems = () => {
         ? Array(8)
             .fill(0)
             .map((_, index) => (
-              <div className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12" key={`skeleton-${index}`}>
+              <div
+                className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                key={`skeleton-${index}`}
+              >
                 <Skeleton />
               </div>
             ))
@@ -69,6 +78,8 @@ const ExploreItems = () => {
               key={index}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
               style={{ display: "block", backgroundSize: "cover" }}
+              data-aos="fade-down"
+              data-aos-duration="4000"
             >
               <div className="nft__item">
                 <div className="author_list_pp">

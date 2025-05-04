@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Skeleton from "../utilities/Skeleton";
 import CountdownTimer from "../utilities/CountdownTimer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const NewItems = () => {
   const [data, setData] = useState([]);
@@ -100,9 +102,13 @@ const NewItems = () => {
     ],
   };
 
+  useEffect(() => {
+    AOS.init({});
+  }, []);
+
   return (
     <section id="section-items" className="no-bottom">
-      <div className="container">
+      <div className="container" data-aos="fade-down" data-aos-duration="4000">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -124,7 +130,7 @@ const NewItems = () => {
                     <div className="nft__item">
                       <div className="author_list_pp">
                         <Link
-                        to={`/author/${item.authorId}`}
+                          to={`/author/${item.authorId}`}
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
                           title="Creator: Monica Lucas"

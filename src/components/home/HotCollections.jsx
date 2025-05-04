@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import SkeletonComponent from "../utilities/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HotCollections = () => {
   const [data, setData] = useState([]);
@@ -108,9 +110,13 @@ const HotCollections = () => {
     ],
   };
 
+  useEffect(() => {
+    AOS.init({});
+  }, []);
+
   return (
     <section id="section-collections" className="no-bottom">
-      <div className="container">
+      <div className="container" data-aos="fade-down" data-aos-duration="4000">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -144,7 +150,7 @@ const HotCollections = () => {
                           <img
                             className="lazy pp-coll"
                             src={item.authorImage}
-                            alt={item.authorName || 'Author'}
+                            alt={item.authorName || "Author"}
                           />
                         </Link>
                         <i className="fa fa-check"></i>

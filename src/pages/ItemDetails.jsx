@@ -3,11 +3,17 @@ import axios from "axios";
 import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import Skeleton from "../components/utilities/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ItemDetails = () => {
   const { nftId } = useParams();
   const [NFTData, setNFTData] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({});
+  }, []);
 
   useEffect(() => {
     const fetchNFTData = async () => {
@@ -31,7 +37,12 @@ const ItemDetails = () => {
 
   return (
     <div id="wrapper">
-      <div className="no-bottom no-top" id="content">
+      <div
+        className="no-bottom no-top"
+        id="content"
+        data-aos="fade-down"
+        data-aos-duration="4000"
+      >
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
           <div className="container">
@@ -43,35 +54,43 @@ const ItemDetails = () => {
                 <div className="col-md-6">
                   <div className="item_info">
                     <Skeleton height="40px" width="70%" className="mb-4" />
-                    
+
                     <div className="item_info_counts mb-4">
                       <Skeleton width="120px" className="mr-3" />
                       <Skeleton width="120px" />
                     </div>
-                    
+
                     <Skeleton height="80px" className="mb-4" />
-                    
+
                     <div className="d-flex flex-row mb-4">
                       <div className="mr40">
                         <Skeleton width="60px" className="mb-2" />
                         <div className="item_author">
                           <div className="d-flex align-items-center">
-                            <Skeleton width="50px" height="50px" className="rounded-circle mr-3" />
+                            <Skeleton
+                              width="50px"
+                              height="50px"
+                              className="rounded-circle mr-3"
+                            />
                             <Skeleton width="120px" />
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="de_tab tab_simple">
                       <Skeleton width="70px" className="mb-2" />
                       <div className="item_author mb-4">
                         <div className="d-flex align-items-center">
-                          <Skeleton width="50px" height="50px" className="rounded-circle mr-3" />
+                          <Skeleton
+                            width="50px"
+                            height="50px"
+                            className="rounded-circle mr-3"
+                          />
                           <Skeleton width="120px" />
                         </div>
                       </div>
-                      
+
                       <div className="spacer-40"></div>
                       <Skeleton width="60px" className="mb-2" />
                       <div className="nft-item-price">

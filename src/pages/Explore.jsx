@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Explore = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    AOS.init({});
   }, []);
 
   return (
@@ -18,7 +24,11 @@ const Explore = () => {
           style={{ background: `url("${SubHeader}") top` }}
         >
           <div className="center-y relative text-center">
-            <div className="container">
+            <div
+              className="container"
+              data-aos="fade-down"
+              data-aos-duration="4000"
+            >
               <div className="row">
                 <div className="col-md-12 text-center">
                   <h1>Explore</h1>
