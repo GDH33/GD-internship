@@ -6,6 +6,8 @@ import LandingIntro from "../components/home/LandingIntro";
 import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
 
+//needed to change something to make a commit
+
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
