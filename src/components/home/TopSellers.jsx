@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
+import AuthorImage from "../../images/author_thumbnail.jpg";
 
 const TopSellers = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
-        );
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching new items:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
-
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
@@ -36,36 +15,24 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {loading
-                ? Array.from({ length: 12 }).map((_, index) => (
-                    <li key={index}>
-                      <div className="author_list_pp">
-                        <div className="skeleton skeleton-circle"></div>
-                      </div>
-                      <div className="author_list_info">
-                        <div className="skeleton skeleton-text"></div>
-                        <div className="skeleton skeleton-text"></div>
-                      </div>
-                    </li>
-                  ))
-                : data.map((item, index) => (
-                    <li key={index}>
-                      <div className="author_list_pp">
-                        <Link to={`/author/${item.authorId}`}>
-                          <img
-                            className="lazy pp-author"
-                            src={item.authorImage}
-                            alt=""
-                          />
-                          <i className="fa fa-check"></i>
-                        </Link>
-                      </div>
-                      <div className="author_list_info">
-                        <Link to={`/author/${item.authorId}`}>{item.authorName}</Link>
-                        <span>{item.price} ETH</span>
-                      </div>
-                    </li>
-                  ))}
+              {new Array(12).fill(0).map((_, index) => (
+                <li key={index}>
+                  <div className="author_list_pp">
+                    <Link to="/author">
+                      <img
+                        className="lazy pp-author"
+                        src={AuthorImage}
+                        alt=""
+                      />
+                      <i className="fa fa-check"></i>
+                    </Link>
+                  </div>
+                  <div className="author_list_info">
+                    <Link to="/author">Monica Lucas</Link>
+                    <span>2.1 ETH</span>
+                  </div>
+                </li>
+              ))}
             </ol>
           </div>
         </div>
