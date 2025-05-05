@@ -5,14 +5,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Skeleton from "../utilities/Skeleton";
-import CountdownTimer from "../utilities/CountdownTimer";
+import Skeleton from "../UI/Skeleton";
+import CountdownTimer from "../UI/CountdownTimer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const NewItems = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({});
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -102,10 +106,6 @@ const NewItems = () => {
     ],
   };
 
-  useEffect(() => {
-    AOS.init({});
-  }, []);
-
   return (
     <section id="section-items" className="no-bottom">
       <div className="container" data-aos="fade-down" data-aos-duration="4000">
@@ -130,7 +130,7 @@ const NewItems = () => {
                     <div className="nft__item">
                       <div className="author_list_pp">
                         <Link
-                          to={`/author/${item.authorId}`}
+                        to={`/author/${item.authorId}`}
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
                           title="Creator: Monica Lucas"

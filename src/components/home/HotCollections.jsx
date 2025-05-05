@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import SkeletonComponent from "../utilities/Skeleton";
+import SkeletonComponent from "../UI/Skeleton";
 import AOS from "aos";
 import "aos/dist/aos.css";
 

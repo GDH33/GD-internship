@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import AuthorBanner from "../images/author_banner.jpg";
+import Skeleton from "../components/UI/Skeleton";
 import AuthorItems from "../components/author/AuthorItems";
-import Skeleton from "../components/utilities/Skeleton";
+import AuthorBanner from "../images/author_banner.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -38,7 +38,7 @@ const Author = () => {
   }, [authorId]);
 
   const handleFollow = () => {
-    setIsFollowing(!isFollowing); // Toggle following state
+    setIsFollowing(!isFollowing);
     setAuthorData((prevData) => ({
       ...prevData,
       followers: isFollowing ? prevData.followers - 1 : prevData.followers + 1,
@@ -143,7 +143,6 @@ const Author = () => {
                       <div className="de-flex-col">
                         <div className="profile_avatar">
                           <img src={authorData.authorImage} alt="" />
-
                           <i className="fa fa-check"></i>
                           <div className="profile_name">
                             <h4>

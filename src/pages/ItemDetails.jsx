@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
-import Skeleton from "../components/utilities/Skeleton";
+import EthImage from "../images/ethereum.svg";
+import Skeleton from "../components/UI/Skeleton";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -54,14 +54,11 @@ const ItemDetails = () => {
                 <div className="col-md-6">
                   <div className="item_info">
                     <Skeleton height="40px" width="70%" className="mb-4" />
-
                     <div className="item_info_counts mb-4">
                       <Skeleton width="120px" className="mr-3" />
                       <Skeleton width="120px" />
                     </div>
-
                     <Skeleton height="80px" className="mb-4" />
-
                     <div className="d-flex flex-row mb-4">
                       <div className="mr40">
                         <Skeleton width="60px" className="mb-2" />
@@ -77,7 +74,6 @@ const ItemDetails = () => {
                         </div>
                       </div>
                     </div>
-
                     <div className="de_tab tab_simple">
                       <Skeleton width="70px" className="mb-2" />
                       <div className="item_author mb-4">

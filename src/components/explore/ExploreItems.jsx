@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import CountdownTimer from "../utilities/CountdownTimer";
-import Skeleton from "../utilities/Skeleton";
+import CountdownTimer from "../UI/CountdownTimer";
+import Skeleton from "../UI/Skeleton";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -11,9 +11,9 @@ const ExploreItems = () => {
   const [visibleItems, setVisibleItems] = useState(8);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    AOS.init({});
-  }, []);
+    useEffect(() => {
+      AOS.init({});
+    }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -63,13 +63,10 @@ const ExploreItems = () => {
         </select>
       </div>
       {loading
-        ? Array(8)
+        ? Array(4)
             .fill(0)
             .map((_, index) => (
-              <div
-                className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-                key={`skeleton-${index}`}
-              >
+              <div className="px-1" key={`skeleton-${index}`}>
                 <Skeleton />
               </div>
             ))
@@ -97,7 +94,6 @@ const ExploreItems = () => {
                     <CountdownTimer expiryDate={item.expiryDate} />
                   </div>
                 )}
-
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
                     <div className="nft__item_buttons">
